@@ -25,6 +25,9 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import Rootlayout from './src/Rootlayout';
 import Navigator_Page from './src/Navigator_Page';
+import { ApiProvider } from '@reduxjs/toolkit/query/react';
+import { Provider } from 'react-redux';
+import { store } from './src/store/store';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -76,8 +79,10 @@ function App(): React.JSX.Element {
   const safePadding = '5%';
 
   return (
+    <Provider store={store}>
+<Navigator_Page/>
 
-   <Navigator_Page/>
+    </Provider>
   );
 }
 

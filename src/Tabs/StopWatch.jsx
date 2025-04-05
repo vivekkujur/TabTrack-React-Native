@@ -1,5 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { increment, incrementByNumber } from '../store/productSlice'
 
 const StopWatchPage = () => {
 
@@ -8,10 +10,13 @@ const StopWatchPage = () => {
 
     const startTimeRef = useRef(0)
     const intervalTimeRef = useRef(null)
+    const dispatch =  useDispatch()
+    const count = useSelector((state)=> state.products.value)
+
 
 
     const clickStart = () => {
-
+        setincremtnt()
         startTimeRef.current = Date.now() - time * 1000
         intervalTimeRef.current = setInterval(() => {
             setTime(Math.floor((Date.now() - startTimeRef.current) / 1000))
@@ -24,6 +29,7 @@ const StopWatchPage = () => {
         clearInterval(intervalTimeRef.current)
         setTime(0)
         setRunning(false)
+        dispatch(incrementByNumber(20))
 
     }
 
@@ -37,6 +43,11 @@ const StopWatchPage = () => {
         clickStart()
 
     }
+
+    const setincremtnt =()=>{
+            dispatch(increment())
+
+        }
 
 
 
@@ -74,6 +85,8 @@ const StopWatchPage = () => {
 
             }
 
+
+<Text style={{ color: 'black', fontSize: 25,fontWeight:'700' }}>{count}</Text>
 
 
         </View>

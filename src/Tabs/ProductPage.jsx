@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { GlobalStyles } from '../Global_Style'
 
@@ -32,6 +32,8 @@ const ProductPage = () => {
     const ItemComp = ({ item }) => {
         // console.log("items",item)
         return (<View style={{ marginHorizontal: 20, marginVertical: 10, backgroundColor: '#d4d4d4', borderRadius: 10, padding: 10 }}>
+            <Image style={{width:100,   height: undefined,
+    aspectRatio: 1,}} source={{uri:item.thumbnail}} />
             <Text style={styles.title_st }>{item.title}</Text>
             <Text>{item.description}</Text>
 
